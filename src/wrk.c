@@ -120,40 +120,40 @@ void gen_stats(uint64_t start) {
     latency_stats->histogram = latency_histogram;
 
     if (cfg.json_encoding) {
-        char *encoded;
-        printf("{\n");
-        if (errors.connect || errors.read || errors.write || errors.timeout) {
-            const char* comma_sep = ", ";
-            const char *prefix = "";
-            printf("\"errors\": {");
-            if (errors.connect) {
-                printf("\"connect\": %d", errors.connect);
-                prefix = comma_sep;
-            }
-            if (errors.read) {
-                printf("%s\"read\": %d", prefix, errors.read);
-                prefix = comma_sep;
-            }
-            if (errors.write) {
-                printf("%s\"write\": %d", prefix, errors.write);
-                prefix = comma_sep;
-            }
-            if (errors.timeout) {
-                printf("%s\"timeout\": %d", prefix, errors.timeout);
-            }
-            if (errors.status) {
-                printf("%s\"http_error\": %d", prefix, errors.status);
-            }
-            printf("},\n");
-        }
-        printf("\"total_req\": %"PRIu64", \"rps\": %.2Lf, \"rx_bps\": \"%sB\",\n",
-               complete, req_per_s, format_binary(bytes_per_s));
-        if (hdr_log_encode(latency_histogram, &encoded)) {
-            encoded = "";
-        }
-        printf("\"hist\": \"%s\"\n}\n", encoded);
-        fflush(stdout);
-        free(encoded);
+        // char *encoded;
+        // printf("{\n");
+        // if (errors.connect || errors.read || errors.write || errors.timeout) {
+        //     const char* comma_sep = ", ";
+        //     const char *prefix = "";
+        //     printf("\"errors\": {");
+        //     if (errors.connect) {
+        //         printf("\"connect\": %d", errors.connect);
+        //         prefix = comma_sep;
+        //     }
+        //     if (errors.read) {
+        //         printf("%s\"read\": %d", prefix, errors.read);
+        //         prefix = comma_sep;
+        //     }
+        //     if (errors.write) {
+        //         printf("%s\"write\": %d", prefix, errors.write);
+        //         prefix = comma_sep;
+        //     }
+        //     if (errors.timeout) {
+        //         printf("%s\"timeout\": %d", prefix, errors.timeout);
+        //     }
+        //     if (errors.status) {
+        //         printf("%s\"http_error\": %d", prefix, errors.status);
+        //     }
+        //     printf("},\n");
+        // }
+        // printf("\"total_req\": %"PRIu64", \"rps\": %.2Lf, \"rx_bps\": \"%sB\",\n",
+        //        complete, req_per_s, format_binary(bytes_per_s));
+        // if (hdr_log_encode(latency_histogram, &encoded)) {
+        //     encoded = "";
+        // }
+        // printf("\"hist\": \"%s\"\n}\n", encoded);
+        // fflush(stdout);
+        // free(encoded);
     } else {
 
 
